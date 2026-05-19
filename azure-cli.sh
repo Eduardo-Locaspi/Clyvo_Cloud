@@ -2,7 +2,7 @@
 RESOURCE_GROUP="rg-clyvoliana"
 VM_NAME="vm-clyvoliana"
 LOCATION="canadacentral"
-VM_SIZE="Standard_B2ats_v2"
+VM_SIZE="Standard_B2als_v2"
 ADMIN_USER="clyvoliana"
 ADMIN_PASSWORD="Clyvolianasenha123."
 
