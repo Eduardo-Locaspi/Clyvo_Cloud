@@ -139,12 +139,12 @@ docker compose logs api-clyvo
 
 **Listar veterinários (GET)**
 ```bash
-curl -X GET http://localhost:8080/vets
+curl -X GET http://`<IP_DA_VM>`:8080/vets
 ```
 
 **Criar veterinário (POST)**
 ```bash
-curl -X POST http://localhost:8080/vets \
+curl -X POST http://`<IP_DA_VM>`:8080/vets \
   -H "Content-Type: application/json" \
   -d '{
     "nome": "Liana Teste",
@@ -157,7 +157,7 @@ curl -X POST http://localhost:8080/vets \
 
 **Atualizar veterinário (PUT) — substituir {id} pelo ID retornado no POST**
 ```bash
-curl -X PUT http://localhost:8080/vets/{id} \
+curl -X PUT http://`<IP_DA_VM>`:8080/vets/{id} \
   -H "Content-Type: application/json" \
   -d '{
     "nome": "Liana Teste ALTERADO",
@@ -170,7 +170,12 @@ curl -X PUT http://localhost:8080/vets/{id} \
 
 **Deletar veterinário (DELETE) — substituir {id} pelo ID retornado no POST**
 ```bash
-curl -X DELETE http://localhost:8080/vets/{id}
+curl -X DELETE http://`<IP_DA_VM>`:8080/vets/{id}
+```
+
+**Verificar deleção (GET)**
+```bash
+curl -X GET http://`<IP_DA_VM>`:8080/vets
 ```
 
 **Parar a aplicação**
