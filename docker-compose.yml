@@ -1,0 +1,52 @@
+services:
+  oracle-clyvo:
+    container_name: oracle-clyvo
+    image: gvenzl/oracle-xe:21-slim-faststart
+    ports:
+      - "1521:1521"
+    networks:
+      - clyvo-network
+    volumes:
+      - oracle-clyvo-data:/opt/oracle/oradata
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      ORACLE_PASSWORD: ${ORACLE_PASSWORD}
+      APP_USER: ${ORACLE_USER}
+      APP_USER_PASSWORD: ${ORACLE_USER_PASSWORD}
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 10s
+      timeout: 20s
+      retries: 10
+      start_period: 120s
+
+  api-clyvo:
+    container_name: api-clyvo
+    build:
+      context: ../Clyvo-JavaAdvanced
+      dockerfile: Dockerfile.api
+    ports:
+      - "8080:8080"
+    networks:
+      - clyvo-network
+    env_file:
+      - .env
+    environment:
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${ORACLE_USER}
+      SPRING_DATASOURCE_PASSWORD: ${ORACLE_USER_PASSWORD}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create
+      SPRING_SQL_INIT_MODE: always
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.OracleDialect
+    depends_on:
+      oracle-clyvo:
+        condition: service_healthy
+    restart: unless-stopped
+
+networks:
+  clyvo-network:
+
+volumes:
+  oracle-clyvo-data:
