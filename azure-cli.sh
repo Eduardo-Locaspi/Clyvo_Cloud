@@ -1,7 +1,7 @@
 # Variáveis
 RESOURCE_GROUP="rg-clyvoliana"
 VM_NAME="vm-clyvoliana"
-LOCATION="eastus"
+LOCATION="canadacentral"
 VM_SIZE="Standard_B2s"
 ADMIN_USER="clyvoliana"
 ADMIN_PASSWORD="Clyvolianasenha123."
