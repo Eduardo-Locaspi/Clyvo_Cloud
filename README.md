@@ -147,30 +147,30 @@ curl -X GET http://localhost:8080/vets
 curl -X POST http://localhost:8080/vets \
   -H "Content-Type: application/json" \
   -d '{
-    "nome": "Dr. Novo Vet",
-    "cpf": "12345678901",
-    "crmv": "CRMV-SP99999",
-    "email": "novevet@email.com",
+    "nome": "Liana Teste",
+    "cpf": "37925356880",
+    "crmv": "CRMV-SP11111",
+    "email": "liana.teste@email.com",
     "senha": "senha123"
   }'
 ```
 
-**Atualizar veterinário (PUT)**
+**Atualizar veterinário (PUT) — substituir {id} pelo ID retornado no POST**
 ```bash
-curl -X PUT http://localhost:8080/vets/1 \
+curl -X PUT http://localhost:8080/vets/{id} \
   -H "Content-Type: application/json" \
   -d '{
-    "nome": "Dr. Carlos Silva Atualizado",
-    "cpf": "12345678901",
-    "crmv": "CRMV-SP12345",
-    "email": "carlos.novo@email.com",
-    "senha": "novaSenha123"
+    "nome": "Liana Teste ALTERADO",
+    "cpf": "37925356880",
+    "crmv": "CRMV-SP22222",
+    "email": "liana.alterado@email.com",
+    "senha": "senha123"
   }'
 ```
 
-**Deletar veterinário (DELETE)**
+**Deletar veterinário (DELETE) — substituir {id} pelo ID retornado no POST**
 ```bash
-curl -X DELETE http://localhost:8080/vets/1
+curl -X DELETE http://localhost:8080/vets/{id}
 ```
 
 **Parar a aplicação**
@@ -269,8 +269,8 @@ volumes:
 O script completo está disponível em [`azure-cli.sh`](./azure-cli.sh).
 
 **Resumo do que o script faz:**
-1. Cria um Resource Group no Azure
-2. Provisiona uma VM Linux Ubuntu 24.04
+1. Cria um Resource Group no Azure (região: canadacentral)
+2. Provisiona uma VM Linux Ubuntu 24.04 (tamanho: Standard_B2als_v2)
 3. Abre as portas 8080 (API) e 1521 (Oracle)
 4. Instala Git, Nano e demais ferramentas
 5. Instala e configura o Docker
