@@ -4,7 +4,7 @@ VM_NAME="vm-clyvoliana"
 LOCATION="eastus"
 VM_SIZE="Standard_B2s"
 ADMIN_USER="clyvoliana"
-ADMIN_PASSWORD="Senha123."
+ADMIN_PASSWORD="Clyvolianasenha123."
 
 echo "Iniciando o provisionamento do Projeto Clyvo..."
 
